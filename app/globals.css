@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020612;
+  --foreground: #f8fafc;
+  --cyan-glow: #38bdf8;
+  --neon-blue: #0ea5e9;
+  --deep-space: #01040a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #020612;
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Atmospheric Cosmic Deep Space Background with twinkling stars */
+.cosmic-bg {
+  background-color: #020612;
+  background-image: 
+    /* Top ambient cyan flare glow */
+    radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.22) 0%, transparent 60%),
+    /* Center deep space illumination behind orb */
+    radial-gradient(circle at 50% 28%, rgba(2, 132, 199, 0.16) 0%, transparent 55%),
+    /* Bottom ambient cyan wash */
+    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.12) 0%, transparent 45%),
+    /* Distant cosmic stardust speckles */
+    radial-gradient(1px 1px at 15% 12%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 85% 18%, rgba(56, 189, 248, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 28% 35%, rgba(186, 230, 253, 0.9), transparent),
+    radial-gradient(1px 1px at 72% 42%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 10% 68%, rgba(56, 189, 248, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 90% 75%, rgba(224, 242, 254, 0.8), transparent),
+    radial-gradient(1px 1px at 45% 82%, rgba(14, 165, 233, 0.7), transparent),
+    radial-gradient(1px 1px at 60% 15%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 35% 92%, rgba(56, 189, 248, 0.8), transparent),
+    radial-gradient(1px 1px at 78% 88%, rgba(255, 255, 255, 0.5), transparent);
+}
+
+/* Custom animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Chat */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.45);
 }
