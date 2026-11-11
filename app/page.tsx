@@ -35,7 +35,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [orbState, setOrbState] = useState<"idle" | "listening" | "thinking" | "speaking">("listening");
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [attachModalOpen, setAttachModalOpen] = useState(false);
 
   // Helper to format current time like 10:24 AM
@@ -153,7 +153,7 @@ export default function Home() {
       <main
         className={`relative z-10 w-full flex flex-col justify-between cosmic-bg overflow-hidden transition-all duration-300 ${
           isExpanded
-            ? "max-w-4xl h-full border-x border-cyan-500/20 shadow-[0_0_80px_rgba(14,165,233,0.15)]"
+            ? "max-w-7xl h-screen border-x border-cyan-500/20 shadow-[0_0_80px_rgba(14,165,233,0.15)]"
             : "max-w-[420px] h-[100dvh] sm:h-[88vh] sm:max-h-[860px] sm:rounded-[44px] sm:border sm:border-cyan-400/40 sm:shadow-[0_0_60px_rgba(14,165,233,0.35),0_0_120px_rgba(2,132,199,0.2)]"
         }`}
       >
